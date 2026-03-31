@@ -39,3 +39,10 @@ for u in userBreak:
     if u["age"] > 25:
         print(u["name"])
         break
+
+userNext = [
+    {"name": "A", "age": 20},
+    {"name": "B", "age": 30}
+]
+found = next((u for u in userNext if u["name"] == "B"), None)
+print(found)
