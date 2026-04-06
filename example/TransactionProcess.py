@@ -7,37 +7,27 @@ transactions : list = [
     {"id": "T6", "user": "C", "amount": 300, "type": "credit"},
 ]
 
-for t in transactions:
-    if t.get("amount") is None:
-        continue
-    elif t.get("amount") < 0:
-        print("invalid transaction:", {t.get("id")})
+def process_transaction(transactions):
+    balances : dict = {} 
+    for t in transactions:
 
-def process_transaction(user):
-    balances : int = 0
-    for r in transactions:
-        if r.get("user") == user:
-            if r.get("amount") is None or r.get("amount") < 0:
-                continue 
-            elif r.get("type") == "credit":
-                balances += r.get("amount") 
-            else:
-                balances -= r.get("amount")
+        user = t.get("user")
+        tx_type = t.get("type")
+        amount = t.get("amount")
+
+        if t.get("amount") is None:
+            continue
+        elif t.get("amount") < 0:
+            print("invalid transaction:", {t.get("id")})
+            continue
+
+        if tx_type == "credit":
+            balances[user] = balances.get(user, 0) + amount
+        else:
+            balances[user] = balances.get(user, 0) - amount
     return balances
-    
-user: list = []
-for e in transactions: 
-    user.append(e.get("user"))
 
-distinct: list = list(dict.fromkeys(user))
+output = process_transaction(transactions)
 
-
-output: list = []
-for d in distinct:
-    amount = process_transaction(d)
-    output.append((d, amount))
-
-print("User Balances:", output)
-
-for user, balance in output:
+for user, balance in output.items():
     print(f"User: {user}, Balance: {balance}")
