@@ -47,5 +47,11 @@ userNext = [
 found = next((u for u in userNext if u["name"] == "B"), None)
 print(found)
 
+## loop range 100
 for _ in range(100):
     print("TEST LOOP")
+
+
+## loop range 0 to 99
+for _ in range(0,100):
+    print(_)
