@@ -25,14 +25,14 @@ def process_transaction(user):
                 balances -= r.get("amount")
     return balances
     
-user = []
+user: list = []
 for e in transactions: 
     user.append(e.get("user"))
 
-distinct = list(dict.fromkeys(user))
+distinct: list = list(dict.fromkeys(user))
 
 
-output = []
+output: list = []
 for d in distinct:
     amount = process_transaction(d)
     output.append((d, amount))
