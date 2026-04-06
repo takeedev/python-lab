@@ -27,9 +27,11 @@ if x > 5 and x < 30:
     print("in range")
 
 
-name = None
-if name is None:
+names = None
+if names is None:
     print("No name")
+else:
+    print("None")
 
 
 list = []
