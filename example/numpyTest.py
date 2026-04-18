@@ -27,6 +27,7 @@ arr = np.array([10, 20, 30, 40])
 print(arr.min())
 print(arr.max())
 print(arr.std())
+print(arr.mean())
 
 ## array operation
 a = np.array([1, 2, 3])
